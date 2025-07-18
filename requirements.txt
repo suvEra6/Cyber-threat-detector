@@ -6,3 +6,7 @@ scikit-learn
 pandas
 numpy
 sentence-transformers
+kafka-python
+python-multipart
+pydantic
+requests

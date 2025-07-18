@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyber Threat Detection</title>
+  <style>
+    body {
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      max-width: 500px;
+      margin: 5% auto;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Cyber Threat Detection</h2>
+    <form id="prediction-form">
+      <label>Destination Port:</label>
+      <input type="number" id="dest_port" required />
+
+      <label>Flow Duration:</label>
+      <input type="number" id="flow_duration" required />
+
+      <label>Total Forward Packets:</label>
+      <input type="number" id="fwd_pkts" required />
+
+      <label>Total Backward Packets:</label>
+      <input type="number" id="bwd_pkts" required />
+
+      <label>Total Length of Forward Packets:</label>
+      <input type="number" id="len_fwd" required />
+
+      <label>Forward Packet Length Max:</label>
+      <input type="number" id="fwd_pkt_max" required />
+
+      <label>Idle Mean:</label>
+      <input type="number" step="0.1" id="idle_mean" required />
+
+      <button type="submit">Detect</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('prediction-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const data = {
+        dest_port: parseInt(document.getElementById('dest_port').value),
+        flow_duration: parseInt(document.getElementById('flow_duration').value),
+        fwd_pkts: parseInt(document.getElementById('fwd_pkts').value),
+        bwd_pkts: parseInt(document.getElementById('bwd_pkts').value),
+        len_fwd: parseInt(document.getElementById('len_fwd').value),
+        fwd_pkt_max: parseInt(document.getElementById('fwd_pkt_max').value),
+        idle_mean: parseFloat(document.getElementById('idle_mean').value),
+      };
+
+      try {
+        const response = await fetch('http://localhost:8000/predict', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        document.getElementById('result').innerHTML =
+          `<strong>Prediction:</strong> ${result.prediction}<br><strong>Confidence:</strong> ${result.confidence}%`;
+      } catch (error) {
+        document.getElementById('result').innerHTML = 'Error connecting to backend.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# .gitignore
+venv310/
+__pycache__/
+logs/
+*.log
+data/
+models/
