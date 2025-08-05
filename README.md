@@ -206,5 +206,6 @@ MIT. Use it, remix it, break it (and maybe fix it).
 ##  Done!
 
 Congrats, you've built a real-time cyber threat detector. High-five! 
-![WhatsApp Image 2025-07-18 at 03 50 36_4e56d88d](https://github.com/user-attachments/assets/cdc1b599-c454-4b5b-a9ef-285c97e3491d)
+![WhatsApp Image 2025-08-05 at 16 24 18_0da263a8](https://github.com/user-attachments/assets/de3f0d2c-9803-4a80-9991-b4a561538289)
+
 
