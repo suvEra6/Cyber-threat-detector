@@ -1,8 +1,8 @@
-🕵️ Cyber Threat Detector
+ Cyber Threat Detector
 
 ---
 
-## 👋 Intro
+##  Intro
 
 Network logs are noisy. Sifting through them for threats? Even noisier. So I decided to hand the job to a fine-tuned language model (because AI doesn’t complain about overtime).
 
@@ -12,7 +12,7 @@ Whether you're learning, building, or just tired of staring at logs that look li
 
 ---
 
-## 💡 What It Does
+##  What It Does
 
 * Listens to network traffic in real time (Kafka consumer-style)
 * Uses a custom-trained DistilBERT model to classify logs as BENIGN or DDoS
@@ -20,7 +20,7 @@ Whether you're learning, building, or just tired of staring at logs that look li
 * Optionally provides a frontend where you can manually submit logs for prediction
 * Runs in Docker for smooth orchestration and deployment
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 cyber-threat-detector/
@@ -45,10 +45,10 @@ cyber-threat-detector/
 ├── dockerfile.consumer           # Dockerfile for log_stream_predictor
 ├── docker-compose.yml            # Spins everything up
 ├── .dockerignore
-└── README.md                     # You’re reading this 📖
+└── README.md                     # You’re reading this 
 ```
 
-## 🚀 How to Run It (Your Cyber Senses, Now Online)
+##  How to Run It (Your Cyber Senses, Now Online)
 
 ### 1. Clone the Repo (a.k.a. bring it home)
 
@@ -57,7 +57,7 @@ git clone https://github.com/yourusername/cyber-threat-detector.git
 cd cyber-threat-detector
 ```
 
-### 2. Build & Start the Stack with Docker 🐳
+### 2. Build & Start the Stack with Docker 
 
 Make sure Docker Desktop is running. Then:
 
@@ -67,11 +67,11 @@ docker-compose up --build
 
 This will spin up:
 
-* Kafka in KRaft mode (no Zookeeper drama 🎉)
+* Kafka in KRaft mode (no Zookeeper drama )
 * FastAPI backend for predictions (/predict)
 * Kafka consumer running log\_stream\_predictor.py
 
-Grab a coffee ☕ while Kafka boots. First-time build may take a minute.
+Grab a coffee  while Kafka boots. First-time build may take a minute.
 
 ### 3. Send Some Test Logs (Let the logs flow)
 
@@ -82,11 +82,11 @@ python log_sender.py
 This will send logs like:
 
 ```
-🔍 Log: DDOS attack detected on port 443
-📌 Prediction: DDoS
+ Log: DDOS attack detected on port 443
+ Prediction: DDoS
 ```
 
-### 4. Try the Frontend (Optional, but flashy ✨)
+### 4. Try the Frontend (Optional, but flashy )
 
 * Open frontend/index.html in your browser
 * Enter log details
@@ -94,9 +94,9 @@ This will send logs like:
 
 ### 5. Check the Results
 
-* 📄 Console: Real-time logs and predictions
-* 📁 logs/predictions.log: Logs every prediction
-* 📃 logs/predictions.db: SQLite DB for predictions (use DB browser!)
+*  Console: Real-time logs and predictions
+*  logs/predictions.log: Logs every prediction
+*  logs/predictions.db: SQLite DB for predictions (use DB browser!)
 
 ### 6. Bonus: API Endpoint
 
@@ -124,7 +124,7 @@ Response:
 }
 ```
 
-### 💎 Sample Input & Output
+###  Sample Input & Output
 
 Input:
 
@@ -135,13 +135,13 @@ DestPort: 80, Flow Duration: 3200000, Fwd Pkts: 3, Bwd Pkts: 2
 Output:
 
 ```
-🔍 Log: DestPort: 80, Flow Duration: 3200000, Fwd Pkts: 3, Bwd Pkts: 2
-📌 Prediction: BENIGN
+ Log: DestPort: 80, Flow Duration: 3200000, Fwd Pkts: 3, Bwd Pkts: 2
+ Prediction: BENIGN
 ```
 
 ---
 
-## 👨‍💻 Model Training
+##  Model Training
 
 Trained on CICDDoS2019 logs with labels.
 
@@ -159,7 +159,7 @@ python app/preprocess.py
 
 Output will land in models/distilbert-anomaly.
 
-## 🧠 How It Works (Nutshell Edition)
+##  How It Works (Nutshell Edition)
 
 1. Kafka Producer ➔ sends logs to logs\_topic
 2. Kafka Consumer ➔ reads logs, sends them through DistilBERT
@@ -167,7 +167,7 @@ Output will land in models/distilbert-anomaly.
 4. FastAPI exposes a /predict endpoint
 5. You interact via browser or HTTP tools (Postman, curl, etc.)
 
-## 📦 Future Work ("maybe later, maybe never")
+##  Future Work ("maybe later, maybe never")
 
 * Alerting system (Slack, email)
 * More attack types (BotNet, PortScan, etc.)
@@ -175,7 +175,7 @@ Output will land in models/distilbert-anomaly.
 * Live dashboard (charts, trends)
 * Real frontend (React, Svelte, etc.)
 
-## 🤝 FAQ
+##  FAQ
 
 Q: Can I run this on a Raspberry Pi?
 A: Maybe. If you believe in magic and have lots of RAM.
@@ -186,7 +186,7 @@ A: Right now, just DDoS. But easy to extend!
 Q: Why use DistilBERT?
 A: Because logs are weird text, and BERT loves weird text.
 
-## 🧼 Cleanup
+##  Cleanup
 
 When you're done:
 
@@ -195,14 +195,16 @@ docker-compose down -v
 docker system prune -a --volumes
 ```
 
-## 📣 Contributions?
+##  Contributions?
 
 PRs welcome! Got ideas for improvements? Fork away!
 
-## 📄 License
+##  License
 
 MIT. Use it, remix it, break it (and maybe fix it).
 
-## 🎉 Done!
+##  Done!
 
-Congrats, you've built a real-time cyber threat detector. High-five! ✋
+Congrats, you've built a real-time cyber threat detector. High-five! 
+![WhatsApp Image 2025-07-18 at 03 50 36_4e56d88d](https://github.com/user-attachments/assets/cdc1b599-c454-4b5b-a9ef-285c97e3491d)
+
